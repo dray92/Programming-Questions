@@ -31,13 +31,22 @@ public class Matrix_Region_Sum {
 		for(int row = 1 ; row < arr.length ; row++) 
 			sums[row][0] = arr[row][0] + sums[row-1][0];
 		
-		for(int col = 1 ; col < arr[0].length ; col++) {
-			int colSum = arr[0][col];
-			for(int row = 1 ; row < arr.length ; row++) {
-				colSum += arr[row][col];
-				sums[row][col] = sums[row][col-1] + colSum;
-			}
-		}
+		// adding cumulative of column sum with corresponding value in previous row
+//		for(int col = 1 ; col < arr[0].length ; col++) {
+//			int colSum = arr[0][col];
+//			for(int row = 1 ; row < arr.length ; row++) {
+//				colSum += arr[row][col];
+//				sums[row][col] = sums[row][col-1] + colSum;
+//			}
+//		}
+		/*
+		 * A cuter approach
+		 */
+		for(int col = 1 ; col < arr[0].length ; col++)
+			for(int row = 1 ; row < arr.length ; row++) 
+				sums[row][col] = sums[row][col-1] + sums[row-1][col] + arr[row][col] - sums[row-1][col-1];
+			
+		
 		
 		return sums;
 	}
