@@ -2,7 +2,7 @@ package leetcode;
 
 public class FormattedTablePrint {
 
-    public static void printRow(int[] row) {
+    public void printRow(int[] row) {
         for (int i : row) {
             System.out.print(i);
             System.out.print("\t");
@@ -11,9 +11,11 @@ public class FormattedTablePrint {
     }
 
     public static void main(String[] args) {
-        int twoDm[][]= new int[7][5];
+    	FormattedTablePrint print = new FormattedTablePrint();
+    	
+    	int twoDm[][]= new int[7][5];
         int i,j,k=1;
-
+        
         for(i=0;i<7;i++) {
             for(j=0;j<5;j++) {
                 twoDm[i][j]=randomWithRange(-1, 1) * k;
@@ -22,7 +24,7 @@ public class FormattedTablePrint {
         }
 
         for(int[] row : twoDm) {
-            printRow(row);
+            print.printRow(row);
         }
     }
     
