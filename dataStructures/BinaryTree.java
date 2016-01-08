@@ -3,7 +3,7 @@ package dataStructures;
 public class BinaryTree {
 	
 	// In-order traversal
-	public static  void traverse(Node root) {
+	public static void traverse(Node root) {
 		if(root != null) {
 			traverse(root.left);
 			System.out.print(root.value + " ");
