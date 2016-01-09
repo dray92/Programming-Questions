@@ -8,7 +8,7 @@ public class Trie {
 	
 	public class TrieNode {
 		char c;
-		HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();;
+		HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
 		boolean isLeaf;
 		
 		public TrieNode() {}
