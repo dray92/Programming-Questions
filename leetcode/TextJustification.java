@@ -87,7 +87,7 @@ public String justify(String words[], int width) {
     }
     
     public static void main(String args[]){
-    	String st = "Debosmit Ray like to code in his free time";
+    	String st = "Debosmit Ray likes to code in his free time";
         TextJustification awl = new TextJustification();
         System.out.println(awl.justify(st.split(" "), 12));
     }
