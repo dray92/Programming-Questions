@@ -35,7 +35,7 @@ public class MedianFinder_Heap {
     	}
     }
     
- // Returns the median of current data stream
+    // Returns the median of current data stream
     public double findMedian() {
     	if(count%2 == 0)
     		return (-1*maxHeap.findMin() + minHeap.findMin())/2.0;
