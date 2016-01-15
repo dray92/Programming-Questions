@@ -53,9 +53,15 @@ public class MyGraph implements Graph {
     				+ "set of given vertices");
     	Set<Vertex> adjacent = new HashSet<Vertex>();
     	for(Edge e: myEdges) 
-    		if(e.from.equals(v))
-    			adjacent.add(e.to);
-    	
+    		if(e.from.equals(v)) 
+    			// instead of directly adding e.to
+    			// to the list, we iterate over myVertices 
+    			// till e.to is reached; that reference is then 
+    			// added to the list
+    			for(Vertex node: myVertices)
+    				if(e.to.equals(node))
+    					adjacent.add(node);
+    		
 		return adjacent;
     }
 
@@ -121,6 +127,10 @@ public class MyGraph implements Graph {
     	while(!nodes.isEmpty()) {
     		Vertex cur = nodes.poll();
     		
+    		// mark node as visited
+    		cur.known = true;
+    		visited.add(cur);
+    		
     		// if the target node has risen to the top
     		// of the priority queue, it's cost must have been determined
     		// no need to proceed to any more nodes
@@ -133,43 +143,54 @@ public class MyGraph implements Graph {
     		boolean costChanged = false;
     		for(Vertex adj: curAdjacent) {
     			int pathCost = isAdjacent(cur, adj);
-    			// adj.cost needs to come from the present cost at that vertex,
-    			// from the priority queue, not from the cost of that vertex received
-    			// from isAdjacent().
-    			int curCost = 0;
-    			// getting cost of node from priority by removing elements till 
-    			// required element is reached; elements are then re-placed
-    			Stack<Vertex> stack = new Stack<Vertex>();
-    			while(!nodes.isEmpty()) {
-    				Vertex node = nodes.poll();
-    				stack.push(node);
-    				if(node.equals(adj)) {
-    					curCost = node.cost;
-    					break;
-    				}
-    			}
-    			while(!stack.isEmpty())
-    				nodes.add(stack.pop());
-    			if(cur.cost + pathCost < curCost) {
+//    			// adj.cost needs to come from the present cost at that vertex,
+//    			// from the priority queue, not from the cost of that vertex received
+//    			// from isAdjacent().
+//    			int curCost = 0;
+//    			// getting cost of node from priority by removing elements till 
+//    			// required element is reached; elements are then re-placed
+//    			Stack<Vertex> stack = new Stack<Vertex>();
+//    			while(!nodes.isEmpty()) {
+//    				Vertex node = nodes.poll();
+//    				stack.push(node);
+//    				if(node.equals(adj)) {
+//    					curCost = node.cost;
+//    					break;
+//    				}
+//    			}
+//    			while(!stack.isEmpty())
+//    				nodes.add(stack.pop());
+//    			if(cur.cost + pathCost < curCost) {
+    			if(cur.cost + pathCost < adj.cost) {
     				adj.cost = cur.cost + pathCost;
+    				adj.prev = cur;
     				costChanged = true;
     			}
     		}
+    		
     		// if any of the costs changed, need to recreate priority queue
     		if(costChanged) {
     			Stack<Vertex> stack = new Stack<Vertex>();
     			while(!nodes.isEmpty()) 
     				stack.push(nodes.poll());
-    			while(!stack.isEmpty()) {
-    				Vertex node = stack.pop();
-    					nodes.add(node);
-    			}
-    			for(Vertex node: curAdjacent) 
-    				if(!curAdjacent.contains(node))
-    					nodes.add(node);
+    			while(!stack.isEmpty()) 
+    				nodes.add(stack.pop());
+    			
     		}
-    		cur.known = true;
-    		visited.add(cur);
+    	}
+    	
+    	if(visited.contains(a) && visited.contains(b)) {
+    		Vertex cur = null;
+    		for(Vertex node: vertices)
+    			if(node.equals(b))
+    				cur = node;
+    		
+    		while(!cur.equals(a)) {
+    			path.add(0,cur);
+    			cur = cur.prev;
+    		}
+    		path.add(0,a);
+    		return sourceTargetCost;
     	}
     	
     	return -1;

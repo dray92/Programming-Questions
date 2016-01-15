@@ -10,8 +10,6 @@ import java.io.*;
 
 public class Paths {
 	public static void main(String[] args) {
-		System.out.println(Arrays.toString(args));
-		System.out.println(args.length);
 		if(args.length != 2) {
 			System.err.println("USAGE: java Paths <vertex_file> <edge_file>");
 			System.exit(1);
