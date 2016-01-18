@@ -1,65 +1,113 @@
 package graph;
 
-/**
- * Representation of a directed graph edge.
- */
-public class Edge {
-	public final Vertex from,to;
-	public final int w;
+import java.util.Comparator;
 
+public class Edge implements Comparable<Edge> {
+
+	private final int v;
+	private final int w;
+	private final double weight;
+	
+	public final static Comparator<Edge> BY_WEIGHT = new ByWeightComparator();
+	
 	/**
-	 * Construct a new edge
-	 * @param from start vertex
-	 * @param to end vertex
-	 * @param w weight of this edge
+	 * Public contsructor
+	 * 
+	 * @param v element containing one vertex
+	 * 
+	 * @param w element containing the other vertex
+	 * 
+	 * @param weight element containing weight of edge
 	 */
-	public Edge(Vertex from, Vertex to, int w) {
-		if(from == null || to == null)
-			throw new IllegalArgumentException("null");
-		this.from = from;
-		this.to = to;
+	public Edge(int v, int w, int weight) {
+		this.v = v;
 		this.w = w;
+		this.weight = weight;
 	}
-
+	
+	
 	/**
-	 * A string representation of this object
-	 * @return A string of the form <from, to, weight>
+	 * Slightly tricky accessor methods
+	 * @return
 	 */
-	public String toString() {
-		return "<"+from+", "+to+", "+w+">";
+	public int either() {  
+		return v; 
 	}
 
-	//auto-generated: hashes on all fields
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((from == null) ? 0 : from.hashCode());
-		result = prime * result + ((to == null) ? 0 : to.hashCode());
-		result = prime * result + w;
-		return result;
+	
+	/**
+	 * Slightly tricky accessor methods
+	 * (enables client code like this)
+	 * 
+	 *	for (int v = 0; v < G.V(); v++) {
+	 * 	   for(Edge e : G.adj(v)) {
+	 *	      int w = e.other(v);
+	 *	      
+	 *	      // edge v-w
+	 *	   }
+	 *	}
+	 *
+	 * @return
+	 */
+	public int other(int vertex) {
+		if (vertex == v) 
+			return w;
+		return v; 
 	}
-
-	//auto-generated: compares all fields
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final Edge other = (Edge) obj;
-		if (from == null) {
-			if (other.from != null)
-				return false;
-		} else if (!from.equals(other.from))
-			return false;
-		if (to == null) {
-			if (other.to != null)
-				return false;
-		} else if (!to.equals(other.to))
-			return false;
-		if (w != other.w)
-			return false;
-		return true;
+	
+	
+	/**
+	 * 
+	 * @return one vertex
+	 */
+	public int v() {
+		return v;
 	}
+	
+	
+	/**
+	 * 
+	 * @return other vertex
+	 */
+	public int w() {
+		return w;
+	}
+	
+	
+	/**
+	 * 
+	 * @return edge weight
+	 */
+	public double weight() {  
+		return weight; 
+	}
+	
+	
+	/**
+	 * So that edges are Comparable, for use in Set
+	 */
+	@Override
+	public int compareTo(Edge that) {
+		if(this.weight < that.weight) 
+			return -1;
+	    else if (this.weight > that.weight) 
+	    	return +1;
+	    return  0;
+	}
+	
+	private static class ByWeightComparator implements Comparator<Edge> {
+		
+		/**
+		 * So that clients can compare edges by weight
+		 * 
+		 */
+		public int compare(Edge e, Edge f) {
+			if (e.weight < f.weight) 
+				return -1;
+			if (e.weight > f.weight) 
+				return +1;
+			return 0;
+	   }
+	}  
 }
+
