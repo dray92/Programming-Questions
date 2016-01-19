@@ -38,7 +38,7 @@ public class BinaryMinHeap<T extends Comparable<T>> implements PriorityQueue<T> 
 		// increment size of heap
 		++size;
 		
-		arr.ensureCapacity(DEFAULT_SIZE);
+		arr.ensureCapacity(Math.max(size, DEFAULT_SIZE));
 		
 		// insert value to the end of the data structure
 		arr.add(size, x);
