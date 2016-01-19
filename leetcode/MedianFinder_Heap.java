@@ -49,6 +49,7 @@ public class MedianFinder_Heap {
 		mf.addNum(2);
 		mf.addNum(4);
 		mf.addNum(3);
+		mf.addNum(5);
 		System.out.println("Median: " + mf.findMedian());
 	}
 }
