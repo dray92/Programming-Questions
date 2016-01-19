@@ -91,12 +91,12 @@ public class KruskalMST {
         // run greedy algorithm
         UF uf = new UF(G.V());
         while (!pq.isEmpty() && mst.size() < G.V() - 1) {
-            Edge e = pq.delMin();
+            Edge e = pq.deleteMin();
             int v = e.either();
             int w = e.other(v);
             if (!uf.connected(v, w)) { // v-w does not create a cycle
                 uf.union(v, w);  // merge v and w components
-                mst.enqueue(e);  // add edge e to mst
+                mst.add(e);  // add edge e to mst
                 weight += e.weight();
             }
         }
@@ -184,9 +184,11 @@ public class KruskalMST {
 
     /**
      * Unit tests the KruskalMST data type.
+     * @throws Exception 
      */
-    public static void main(String[] args) {
-    	Scanner in = new Scanner(args[0]);
+    public static void main(String[] args) throws Exception {
+    	
+    	Scanner in = new Scanner(Download_File.downloadFile(args[0]));
         MyWeightedGraph G = new MyWeightedGraph(in);
         KruskalMST mst = new KruskalMST(G);
         for (Edge e : mst.edges()) {

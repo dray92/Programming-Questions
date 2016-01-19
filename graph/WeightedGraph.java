@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.List;
+
 
 /**
  * Base interface for weighted queue implementations. 
@@ -47,5 +49,13 @@ public interface WeightedGraph {
 	 * @return String element containing representation of the graph
 	 */
 	String toString();
+	
+	
+	/**
+	 * Return an iterable list of the edges of the graph
+	 * 
+	 * @return list of edges
+	 */
+	List<Edge> edges();
 
 }

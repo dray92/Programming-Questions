@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Stack;
@@ -184,5 +185,12 @@ public class MyWeightedGraph implements WeightedGraph {
         }
         return s.toString();
     }
+
+
+	@Override
+	public List<Edge> edges() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
