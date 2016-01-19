@@ -153,7 +153,7 @@ public class String_Expression {
 	}
 	
 	public static void main(String[] args) {
-		String st = "4 + 5 * 10 + ( 5 + 6 )";
+		String st = "4 + 5 * 10 + ( 5 + 4 )";
 		System.out.println(st + " = " + solver(st));
 	}
 }

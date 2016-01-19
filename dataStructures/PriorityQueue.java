@@ -3,8 +3,9 @@ package dataStructures;
 /**
  * Base interface for priority queue implementations for doubles. 
  * Throw exceptions as appropriate. 
+ * @param <T>
  */
-public interface PriorityQueue {
+public interface PriorityQueue<T> {
 	/**
 	 * Returns true if priority queue has no elements
 	 *
@@ -26,7 +27,7 @@ public interface PriorityQueue {
 	 *
 	 * @return the minimum element or throw EmptyHeapException if empty
 	 */
-	public int findMin();
+	public T findMin();
 
 
 	/**
@@ -35,7 +36,7 @@ public interface PriorityQueue {
 	 *
 	 * @param x element to be inserted into the priority queue.
 	 */
-	public void insert(int x);
+	public void insert(T x);
 
 
 	/**
@@ -43,7 +44,7 @@ public interface PriorityQueue {
 	 *
 	 * @return the minimum element or throw EmptyHeapException if empty
 	 */
-	public int deleteMin();
+	public T deleteMin();
 
 
 	/**

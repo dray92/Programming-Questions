@@ -10,7 +10,9 @@ import java.io.*;
 
 public class Paths {
 	public static void main(String[] args) {
-		if(args.length != 2) {
+		Random rand = new Random(2);
+    	System.out.println(rand.nextInt());
+        if(args.length != 2) {
 			System.err.println("USAGE: java Paths <vertex_file> <edge_file>");
 			System.exit(1);
 		}

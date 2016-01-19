@@ -11,7 +11,7 @@ public class Edge implements Comparable<Edge> {
 	public final static Comparator<Edge> BY_WEIGHT = new ByWeightComparator();
 	
 	/**
-	 * Public contsructor
+	 * Public constructor
 	 * 
 	 * @param v element containing one vertex
 	 * 
@@ -19,7 +19,7 @@ public class Edge implements Comparable<Edge> {
 	 * 
 	 * @param weight element containing weight of edge
 	 */
-	public Edge(int v, int w, int weight) {
+	public Edge(int v, int w, double weight) {
 		this.v = v;
 		this.w = w;
 		this.weight = weight;

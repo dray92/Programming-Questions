@@ -5,7 +5,7 @@ import dataStructures.PriorityQueue;
 
 public class MedianFinder_Heap {
 	
-	private PriorityQueue minHeap, maxHeap;
+	private PriorityQueue<Integer> minHeap, maxHeap;
 	private int count;
 	
 	public MedianFinder_Heap() {

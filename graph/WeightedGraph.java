@@ -34,6 +34,14 @@ public interface WeightedGraph {
 	
 	
 	/**
+	 * Return the number of edges
+	 * 
+	 * @return integer element containing number of elements
+	 */
+	int E();
+	
+	
+	/**
 	 * Return a string representation
 	 * 
 	 * @return String element containing representation of the graph

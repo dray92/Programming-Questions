@@ -1,14 +1,16 @@
 package dataStructures;
 
-public class BinaryMinHeap implements PriorityQueue {
+import java.util.ArrayList;
 
-	private int[] arr;
+public class BinaryMinHeap<T extends Comparable<T>> implements PriorityQueue<T> {
+
+	private ArrayList<T> arr;
 	private int size;
 	private final int DEFAULT_SIZE = 101;
 	private final double LOAD_FACTOR = 0.75;
 	
 	public BinaryMinHeap() {
-		arr = new int[DEFAULT_SIZE];
+		arr = new ArrayList<T>();
 		size = 0;
 	}
 	
@@ -23,65 +25,53 @@ public class BinaryMinHeap implements PriorityQueue {
 	}
 
 	@Override
-	public int findMin() {
+	public T findMin() {
 		if(isEmpty())
 			throw new EmptyHeapException("Queue must have at least one entry");
-		return arr[1];
+		return arr.get(1);
 	}
 
 	@Override
-	public void insert(int x) {
-		
-		// check for load on array
-		loadCheck();
+	public void insert(T x) {
 		
 		// increment size of heap
 		size++;
 		
 		// insert value to the end of the data structure
-		arr[size] = x;
+		arr.add(size, x);
 		
 		// percolate up
 		int hole = size;
-		while(hole > 1 && arr[hole/2] > arr[hole]) {
-			int child = arr[hole/2];
-			arr[hole/2] = arr[hole];
-			arr[hole] = child;
+		while(hole > 1 && arr.get(hole/2) > arr.get(hole)) {
+			T child = arr.get(hole/2);
+			arr.add(hole/2, arr.get(hole));
+			arr.add(hole, child);
 			hole /= 2;
 		}
 	}
 
-	private void loadCheck() {
-		if(size >= (int)(LOAD_FACTOR * arr.length)) {
-			int[] newArr = new int[2*arr.length];
-			for(int i = 1; i < arr.length ; i++) 
-				newArr[i] = arr[i];
-			arr = newArr;
-		}
-	}
-
 	@Override
-	public int deleteMin() {
+	public T deleteMin() {
 		
 		if(isEmpty())
 			throw new EmptyHeapException("Queue must have at least one entry");
 		
-		int retVal = arr[1];
+		T retVal = arr.get(1);
 		
 		// copying last element to the top
-		arr[1] = arr[size];
+		arr.add(1, arr.get(size));
 		
 		// percolate down
 		int curIndex = 1;
 		while(curIndex <= size/2) {
 			int childIndex = 2*curIndex;
-			if(arr[childIndex] > arr[childIndex+1] && childIndex+1 <= size) 
+			if(arr.get(childIndex) > arr.get(childIndex+1) && childIndex+1 <= size) 
 				childIndex++;
-			if(arr[childIndex] > arr[curIndex])
+			if(arr.get(childIndex) > arr.get(curIndex))
 				break;
-			int childVal = arr[childIndex];
-			arr[childIndex] = arr[curIndex];
-			arr[curIndex] = childVal;
+			T childVal = arr.get(childIndex);
+			arr.add(childIndex, arr.get(curIndex));
+			arr.add(curIndex, childVal);
 			curIndex = childIndex;
 		}
 		size--;		
@@ -90,9 +80,7 @@ public class BinaryMinHeap implements PriorityQueue {
 
 	@Override
 	public void makeEmpty() {
-		arr = new int[DEFAULT_SIZE];
+		arr = new ArrayList<T>();
 		size = 0;
-		
 	}
-
 }
