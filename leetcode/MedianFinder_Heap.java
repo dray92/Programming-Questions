@@ -9,8 +9,8 @@ public class MedianFinder_Heap {
 	private int count;
 	
 	public MedianFinder_Heap() {
-		minHeap = new BinaryMinHeap();
-		maxHeap = new BinaryMinHeap();
+		minHeap = new BinaryMinHeap<Integer>();
+		maxHeap = new BinaryMinHeap<Integer>();
 		count = 0;
 	}
 	

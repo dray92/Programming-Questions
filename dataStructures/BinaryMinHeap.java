@@ -7,10 +7,11 @@ public class BinaryMinHeap<T extends Comparable<T>> implements PriorityQueue<T> 
 	private ArrayList<T> arr;
 	private int size;
 	private final int DEFAULT_SIZE = 101;
-	private final double LOAD_FACTOR = 0.75;
+//	private final double LOAD_FACTOR = 0.75;
 	
 	public BinaryMinHeap() {
-		arr = new ArrayList<T>();
+		arr = new ArrayList<T>(DEFAULT_SIZE);
+		arr.add(0, (T) null);
 		size = 0;
 	}
 	
@@ -35,14 +36,14 @@ public class BinaryMinHeap<T extends Comparable<T>> implements PriorityQueue<T> 
 	public void insert(T x) {
 		
 		// increment size of heap
-		size++;
+		++size;
 		
 		// insert value to the end of the data structure
 		arr.add(size, x);
 		
 		// percolate up
 		int hole = size;
-		while(hole > 1 && arr.get(hole/2) > arr.get(hole)) {
+		while(hole > 1 && ((arr.get(hole/2).compareTo(arr.get(hole))) > 0)) {
 			T child = arr.get(hole/2);
 			arr.add(hole/2, arr.get(hole));
 			arr.add(hole, child);
@@ -65,9 +66,9 @@ public class BinaryMinHeap<T extends Comparable<T>> implements PriorityQueue<T> 
 		int curIndex = 1;
 		while(curIndex <= size/2) {
 			int childIndex = 2*curIndex;
-			if(arr.get(childIndex) > arr.get(childIndex+1) && childIndex+1 <= size) 
+			if(arr.get(childIndex).compareTo(arr.get(childIndex+1)) > 0 && childIndex+1 <= size) 
 				childIndex++;
-			if(arr.get(childIndex) > arr.get(curIndex))
+			if(arr.get(childIndex).compareTo(arr.get(curIndex)) > 0)
 				break;
 			T childVal = arr.get(childIndex);
 			arr.add(childIndex, arr.get(curIndex));
