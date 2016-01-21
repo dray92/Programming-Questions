@@ -158,7 +158,7 @@ public class ArrayString1_6 {
 				byte[] curPixel = new byte[4];
 				for(int k = curPixel.length - 1 ; k >= 0 ; k--)
 					// range of byte is [-128, 127]
-					curPixel[k] = count;//rotate.randomWithRange(-128, 127);
+					curPixel[k] = count;
 				pixels[i][j] = new Pixel(curPixel);
 				count++;
 			}
