@@ -21,9 +21,10 @@ public class Find_Next_Higher_Number_With_Same_Digits {
 		// if everything to the right of this pivot
 		// is sorted, the smallest of that subset of
 		// digits will be at pivot+1; this digit will
-		// be greater than the digit at pivot; switch
-		// these two would and append the rest of 
-		// the sorted list give the next largest number
+		// not necessarily be greater than the digit at pivot; 
+		// swapping pivot with a number in the sorted set
+		// that is greater than the pivot value will yield
+		// the required number
 		
 		// need to sort indices [pivot+1, val.length()-1]
 		// single pass radix sort would work since we have
@@ -37,18 +38,18 @@ public class Find_Next_Higher_Number_With_Same_Digits {
 		
 		// sort the digits
 		// note: sorting can also be replaced with reversing
-		// order of digits since they must be a0 > a1 > a3 ...
+		// order of digits since they must be a0 >= a1 >= a3 ...
 		RadixSort Sort = new RadixSort();
 		Sort.sort(digits);
 		
 		// swap index pivot with appropriate
 		// value in digits that is greater than current
-		// value of pivot
+		// value of pivot;
 		// after this process, array must remain sorted
 		// since oldPivotValue is being put at the index of value 
 		// that is greater than it; it is also ensured that the 
 		// values at all indices before this are less than 
-		// the oldPivotValue
+		// or equal to the oldPivotValue
 		int oldPivotVal = val.charAt(pivot) - '0';
 		for(int i = 0 ; i < digits.length ; i++) {
 			if(digits[i] > oldPivotVal) {
