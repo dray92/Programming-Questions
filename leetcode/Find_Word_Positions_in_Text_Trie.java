@@ -26,6 +26,10 @@ public class Find_Word_Positions_in_Text_Trie {
 		TrieNodeSet(char c) {
 			this.c = c;
 		}
+		
+		char getChar() {
+			return this.c;
+		}
 	}
 	
 	private class Trie {
@@ -33,6 +37,33 @@ public class Find_Word_Positions_in_Text_Trie {
 		
 		Trie() {
 			root = new TrieNodeSet();
+		}
+		
+		boolean insert(String word, int position) {
+			try {
+				HashMap<Character, TrieNodeSet> curChildren = root.children;
+				for(int i = 0 ; i < word.length() ; i++) {
+					char ch = word.charAt(i);
+					TrieNodeSet t;
+					if(curChildren.keySet().contains(ch))
+						t = curChildren.get(ch);
+					else {
+						t = new TrieNodeSet(ch);
+						curChildren.put(ch, t);
+					}
+					curChildren = t.children;
+					
+					// when to add word tag and update/create 
+					// set of positions
+					if(i == word.length() - 1) {
+						t.isWord = true;
+						t.positions.add(position);
+					}
+				}
+				return true;
+			} catch(Exception e) {
+				return false;
+			}
 		}
 		
 		boolean contains(String word) {
@@ -47,14 +78,12 @@ public class Find_Word_Positions_in_Text_Trie {
 		}
 		
 		Set<Integer> getItem(String word) {
+			if(!contains(word))
+				return new HashSet<Integer>();
 			TrieNodeSet cur = root;
-			for(int i = 0 ; i < word.length();  i++) {
-				char ch = word.charAt(i);
-				if(!cur.children.keySet().contains(ch))
-					cur.children.put(ch, new TrieNodeSet(ch));
-				cur = cur.children.get(ch);
-			}
-			cur.isWord = true;
+			for(int i = 0 ; i < word.length();  i++) 
+				cur = cur.children.get(word.charAt(i));
+			
 			return cur.positions;
 		}
 	}
@@ -75,8 +104,9 @@ public class Find_Word_Positions_in_Text_Trie {
 	}
 	
 	public void createIndex(String[] words) {
+		int count = 0;
 		for(String word: words) 
-			trie.getItem(word);
+			trie.insert(word, count++);
 	}
 	
 	public Set<Integer> queryIndex(String word) {
@@ -93,9 +123,16 @@ public class Find_Word_Positions_in_Text_Trie {
 		System.out.println("Words: " + Arrays.toString(words));
 		
 		it.createIndex(words);
-		String word = "a";
-		System.out.println("Words: " + Arrays.toString(it.queryIndex(word).toArray()));
+		String word = "3a";
+		System.out.println("Positions for " + word + ": " + Arrays.toString(it.queryIndex(word).toArray()) + "\n\n");
 		
 		
+		text = "a_b 1`3a a";
+		words = it.getWords(text);
+		System.out.println("Words: " + Arrays.toString(words));
+		
+		it.createIndex(words);
+		word = "3a";
+		System.out.println("Positions for " + word + ": " + Arrays.toString(it.queryIndex(word).toArray()));
 	}
 }
