@@ -9,3 +9,9 @@ dataStructures
   
 
 leetcode [contains questions from sources other than LeetCode]
+
+ctci [contains solutions to questions from ctci]
+
+dijkstra [dijkstra's algorithm]
+
+graph [questions related to graph theory]
