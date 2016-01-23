@@ -2,7 +2,11 @@ package ctci;
 
 import ctci.LinkedList2_1.Node;
 
-
+/**
+ * Find the kth to last element of a singly linked list
+ * @author Debosmit
+ *
+ */
 public class LinkedList2_2 {
 	
 	public Node<Integer> removeKthFromEnd(Node<Integer> root, int k) {
