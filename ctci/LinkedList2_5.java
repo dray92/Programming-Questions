@@ -100,7 +100,6 @@ public class LinkedList2_5 {
 		}
 		System.out.println("List2: " + root2.getList());
 		
-		
 		LinkedList2_5 Traverser = new LinkedList2_5();
 		
 		Node<Integer> sum = Traverser.getSum(root1, root2);
