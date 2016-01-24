@@ -42,6 +42,41 @@ public class LinkedList2_7 {
 		return true;
 	}
 	
+	
+	private <T> PalindromeResultObject<T> isPalindromeRecurse(Node<T> list, 
+			int length) {
+		
+		if (list == null || length == 0) {
+			return new LinkedList2_7.PalindromeResultObject<T>(null, true);
+		} else if (length == 1) {
+			return new LinkedList2_7.PalindromeResultObject<T>(list.next, true);
+		} else if (length == 2) {
+			return new 
+					LinkedList2_7.PalindromeResultObject<T>(list.next.next, 
+							list.value == list.next.value);
+		}
+		LinkedList2_7.PalindromeResultObject<T> res = 
+				isPalindromeRecurse(list.next, length - 2);
+		if (!res.isPalindrome || res.node == null) 
+			return res; 
+		
+		res.isPalindrome = list.value == res.node.value;
+		res.node = res.node.next;
+		return res;
+	}
+	
+	public <T> boolean isPalindromeRecurse(Node<T> list) {
+		int size = 0;
+		Node<T> cur = list;
+		while(cur != null) {
+			size++;
+			cur = cur.next;
+		}
+		
+		PalindromeResultObject<T> obj = isPalindromeRecurse(list, size);
+		return obj.isPalindrome;
+	}
+	
 	public static void main(String[] args) {
 		Node<Character> list = new Node<Character>('A');
 		Node<Character> cur = list;
@@ -56,6 +91,16 @@ public class LinkedList2_7 {
 		}
 		System.out.println("List: " + list.getList());
 		LinkedList2_7 Traverser = new LinkedList2_7();
-		System.out.println("Is list a palindrome? " + Traverser.isPalindrome(list));
+		System.out.println("Is list a palindrome? " + Traverser.isPalindromeRecurse(list));
+	}
+	
+	public class PalindromeResultObject<T> {
+		Node<T> node;
+		boolean isPalindrome;
+		
+		public PalindromeResultObject(Node<T> node, boolean result) {
+			this.node = node;
+			this.isPalindrome = result;
+		}
 	}
 }
