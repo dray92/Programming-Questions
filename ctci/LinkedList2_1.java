@@ -27,10 +27,10 @@ public class LinkedList2_1 {
 		
 		@Override
 		public String toString() {
-			return "" + this.value;
+			return "" + this.value;//getList();
 		}
 		
-		// prints list starting at 'this'
+		// list starting at 'this'
 		public String getList() {
 			StringBuilder list = new StringBuilder();
 			Node<T> cur = this;
