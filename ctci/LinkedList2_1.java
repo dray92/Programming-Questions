@@ -25,6 +25,7 @@ public class LinkedList2_1 {
 			this.next = next;
 		}
 		
+		@Override
 		public String toString() {
 			return "" + this.value;
 		}
@@ -39,6 +40,10 @@ public class LinkedList2_1 {
 				list.append(" -> " + cur.value);
 			}
 			return list.toString();
+		}
+		
+		public boolean equals(Node<T> other) {
+			return this == other;
 		}
 	}
 	
