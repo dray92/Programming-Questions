@@ -19,7 +19,14 @@ public class StackQueue3_1<T> {
         @SuppressWarnings("unchecked")
         final T[] arr = (T[]) Array.newInstance(c, stackSize*numStacks);
         this.arrStack = arr;
+        
+        // initialize stackPointers to -1
         stackPointers = new int[numStacks];
+        for(int i = 0 ; i < numStacks ; i++)
+        	stackPointers[i] = -1;
+        
+        this.stackSize = stackSize;
+        this.numStacks = numStacks;
     }
 	
 	public void push(T val, int numStack) {
@@ -53,13 +60,13 @@ public class StackQueue3_1<T> {
 	}
 	
 	public boolean isFull(int numStack) {
-		return getStackTopIndex(numStack) == stackSize;
+		return stackPointers[numStack] == stackSize-1;
 	}
 	
 	public boolean isEmpty(int numStack) {
 		if(numStack < 0 || numStack >= stackPointers.length)
 			throw new IllegalArgumentException("Stack " + numStack + " isn't one of the stacks");
-		return stackPointers[numStacks] == -1;
+		return stackPointers[numStack] == -1;
 	}
 	
 	private int getStackTopIndex(int numStack) {
@@ -67,7 +74,37 @@ public class StackQueue3_1<T> {
 	}
 	
 	public static void main(String[] args) {
-		StackQueue3_1<String> stack = new StackQueue3_1<String>(String.class, 5, 5);
+		// elements in stack: 5
+		// number of stacks: 2
+		int numStacks = 2, stackSize = 5;
+		StackQueue3_1<String> stack = new StackQueue3_1<String>(String.class, stackSize, numStacks);
 		
+		System.out.println("Added to stack 0: " + "Abby");
+		stack.push("Abby", 0);
+		System.out.println("Added to stack 0: " + "Bob");
+		stack.push("Bob", 0);
+		
+		System.out.println("\nAdded to stack 1: " + "Abby");
+		stack.push("Abby", 1);
+		System.out.println("Added to stack 1: " + "Bob");
+		stack.push("Bob", 1);
+		System.out.println("Added to stack 1: " + "Carl");
+		stack.push("Carl", 1);
+		System.out.println("Added to stack 1: " + "Dick");
+		stack.push("Dick", 1);
+		System.out.println("Added to stack 1: " + "Evan");
+		stack.push("Evan", 1);
+		System.out.println("Added to stack 1: " + "Frank");
+		stack.push("Frank", 1);
+		
+		System.out.println("\nPeeking from top of stack 0: " + stack.peek(0));
+		String val = stack.pop(0);			// stack was initialized to hold Strings
+		System.out.println("Value popped from stack 0: " + val);
+		System.out.println("Top of stack 0: " + stack.peek(0));
+		
+		System.out.println("\nPeeking from top of stack 1: " + stack.peek(1));
+		val = stack.pop(1);			// stack was initialized to hold Strings
+		System.out.println("Value popped from stack 1: " + val);
+		System.out.println("Top of stack 1: " + stack.peek(1));
 	}
 }
