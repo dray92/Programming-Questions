@@ -82,9 +82,14 @@ public class StackQueue3_2 {
 	
 	public static void main(String[] args) {
 		StackQueue3_2 stack = new StackQueue3_2();
-		stack.pop();
+		// test exception
+//		stack.pop();
+		System.out.println("Current min: " + stack.getMin());
+		System.out.println("Add 5");
 		stack.push(5);
+		System.out.println("Add 4");
 		stack.push(4);
+		System.out.println("Current min: " + stack.getMin());
 	}
 	
 }
