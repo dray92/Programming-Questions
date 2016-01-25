@@ -57,9 +57,9 @@ public class StackQueue3_4 {
 	public void moveDisks(int numDisks, int destTowerIndex, int bufTowerIndex, 
 			int srcTowerIndex) throws Exception {
 		if(numDisks > 0) {
-			moveDisks(numDisks - 1, bufTowerIndex, destTowerIndex,srcTowerIndex );
+			moveDisks(numDisks - 1, bufTowerIndex, destTowerIndex, srcTowerIndex);
 			moveTop(srcTowerIndex, destTowerIndex);
-			moveDisks(numDisks - 1, destTowerIndex, srcTowerIndex,bufTowerIndex );
+			moveDisks(numDisks - 1, destTowerIndex, srcTowerIndex, bufTowerIndex);
 		}
 		
 	}
