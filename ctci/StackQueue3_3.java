@@ -40,7 +40,14 @@ public class StackQueue3_3 {
 			curStack = arr.get(stackIndex);
 			if(curStack == null) {
 				curStack = new Stack<Integer>();
-				try{
+				try {
+					// on first use, when ArrayList is not
+					// set yet, trying to set an index will
+					// throw an exception; on future uses,
+					// if an index has been previously accessed,
+					// but the memory allocated to it throw away,
+					// then set will work since that index 
+					// currently holds null
 					arr.set(stackIndex, curStack);
 				} catch(Exception e) {
 					arr.add(stackIndex, curStack);
