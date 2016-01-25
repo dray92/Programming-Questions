@@ -33,6 +33,9 @@ public class StackQueue3_6 extends Stack<Integer> {
 	public void sort() {
 		while(!stack.isEmpty()) {
 			int curTop = stack.pop();
+			// keep popping till either stack is empty
+			// or value on top of auxStack is larger than 
+			// or equal to the value on top of the stack
 			while(!auxStack.isEmpty() && auxStack.peek() < curTop) 
 				stack.push(auxStack.pop());
 			
