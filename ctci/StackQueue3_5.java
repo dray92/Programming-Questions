@@ -53,12 +53,12 @@ public class StackQueue3_5<T> {
 	}
 	
 	// returns a new number in [min, max];
-	private static byte randomWithRange(int min, int max) {
+	private static int randomWithRange(int min, int max) {
 		if(max < min)
 			return randomWithRange(max, min);
 		
 		int range = (max - min) + 1;     
-		return (byte)((Math.random() * range) + min);
+		return (int)((Math.random() * range) + min);
 	}
 	
 	public static void main(String[] args) {
