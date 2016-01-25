@@ -90,6 +90,11 @@ public class StackQueue3_2 {
 		System.out.println("Add 4");
 		stack.push(4);
 		System.out.println("Current min: " + stack.getMin());
+		
+		float a = (float) 1.0;
+		int b=1;
+		boolean j;
+		System.out.println(j=(a==b));
 	}
 	
 }
