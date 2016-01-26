@@ -32,7 +32,6 @@ public class Bits5_2 {
 				value = rem;
 			}
 		}
-		
 		return binary.toString();
 	}
 	
