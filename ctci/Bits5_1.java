@@ -45,6 +45,6 @@ public class Bits5_1 {
 		// 1 0 0 1 1 = 19
 		//	 1 0 1	 = 5
 		// 1 1 0 1 1 = 27
-		System.out.println(new Bits5_1().getModifiedBits(n, m, i, j));
+		System.out.println("Returned value: " + new Bits5_1().getModifiedBits(n, m, i, j));
 	}
 }
