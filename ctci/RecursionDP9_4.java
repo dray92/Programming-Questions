@@ -11,17 +11,20 @@ public class RecursionDP9_4 {
 		subsets.add(new ArrayList<Integer>());
 		
 		for(int i = 0 ; i < set.size() ; i++) {
-			int val = set.get(i);
+			int val = set.get(i);	// get the value in the set
 			
+			// keep track of the new subsets we'll make
 			ArrayList<ArrayList<Integer>> moreSubsets = new ArrayList<ArrayList<Integer>>();
 			
+			// go over all the existing subsets
 			for(ArrayList<Integer> subset: subsets) {
+				// create a new subset
 				ArrayList<Integer> newsubset = new ArrayList<Integer>();
-				newsubset.addAll(subset);	// adding what was there in the previous list
-				newsubset.add(val);
-				moreSubsets.add(newsubset);
+				newsubset.addAll(subset);	// adding contents of existing subset
+				newsubset.add(val);			// adding value to create new subset
+				moreSubsets.add(newsubset);	// adding new subset to the set of new subsets
 			}
-			subsets.addAll(moreSubsets);
+			subsets.addAll(moreSubsets);	// adding all new subsets to the old list
 		}
 		return subsets;
 	}
