@@ -9,7 +9,7 @@ package ctci;
  */
 public class RecursionDP9_1 {
 
-	public int countStepsDP(int n, int[] map) {
+	public long countStepsDP(int n, long[] map) {
 		if (n < 0) 
 			return 0;
 		
@@ -27,7 +27,7 @@ public class RecursionDP9_1 {
 		}
 	}
 	
-	public int countStepsRecursion(int n) {
+	public long countStepsRecursion(int n) {
 		if(n < 0)
 			return 0;
 		
@@ -45,16 +45,16 @@ public class RecursionDP9_1 {
 	}
 	
 	public static void main(String[] args) {
-		int steps = 35;
+		int steps = 38;
 		RecursionDP9_1 stepCounter = new RecursionDP9_1();
 		
 		for(int step = 0 ; step < steps ; step++) {
-			int[] map = new int[step+1];
+			long[] map = new long[step+1];
 			for(int i = 0 ; i < map.length ; i++) 
 				map[i] = -1;
 			
 			long t1 = System.currentTimeMillis();
-			int ways = stepCounter.countStepsRecursion(step);
+			long ways = stepCounter.countStepsRecursion(step);
 			long t2 = System.currentTimeMillis();
 			System.out.println(step + " steps || Recursion: " + ways 
 					+ "   (" + millisToSec(t2-t1) + " sec)");
