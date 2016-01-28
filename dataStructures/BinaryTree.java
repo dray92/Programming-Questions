@@ -140,5 +140,9 @@ public class BinaryTree {
 			this.right = right;
 			this.height = 1;
 		}
+		
+		public String toString() {
+			return "" + this.value;
+		}
 	}
 }
