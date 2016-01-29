@@ -3,6 +3,12 @@ package leetcode;
 import dataStructures.BinaryTree;
 import dataStructures.BinaryTree.Node;
 
+/**
+ * Check if a given tree is a 
+ * valid binary search tree.
+ * @author Debosmit
+ *
+ */
 public class Binary_Search_Tree_Check {
 	public boolean isValid(Node root) {
 		return isValid(root, Integer.MIN_VALUE, Integer.MAX_VALUE);

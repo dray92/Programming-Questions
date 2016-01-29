@@ -1,5 +1,11 @@
 package leetcode;
 
+/**
+ * Two strings contain binary representations
+ * of numbers. Add them and return a new string.
+ * @author Debosmit
+ *
+ */
 public class Add_Binary {
     public static String addBinary(String a, String b) {
         if(a == null && b == null)
@@ -28,7 +34,6 @@ public class Add_Binary {
         		return null;
         	
         	int s = aChar ^ bChar;
-        	
         	
         	int carryTemp1 = s & carry;
         	int carryTemp2 = aChar & bChar;

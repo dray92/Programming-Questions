@@ -5,6 +5,12 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Arrays;
 
+/**
+ * Check if 2 elements in an array have a sum
+ * k. Return all such pairs in a list.
+ * @author Debosmit
+ *
+ */
 public class Array_Pair_Sum {
 
 	public List<List<Integer>> pairSum(int[] arr, int k) {

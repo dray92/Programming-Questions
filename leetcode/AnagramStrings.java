@@ -2,7 +2,7 @@ package leetcode;
 
 import java.util.HashMap;
 
-/*
+/**
  * Given two strings, check if they’re anagrams or 
  * not. Two strings are anagrams if they are written 
  * using the same exact letters, ignoring space, 
