@@ -24,7 +24,7 @@ public class Integer_to_Roman {
 		
 		StringBuilder roman = new StringBuilder();
 		
-		for(int i=0; i<13; i++) {
+		for(int i = 0; i < dict.length; i++) {
 			// if our current num is greater than the value at the array at index i,
 			// we need to know how many times it is occurring
             if(num >= val[i]) {
