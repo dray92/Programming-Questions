@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.HashSet;
 
-/*
+/**
  * Given an integer array, one element occurs 
  * even number of times and all others have 
  * odd occurrences. Find the element with even 

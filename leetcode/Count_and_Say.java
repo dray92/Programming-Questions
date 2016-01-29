@@ -39,6 +39,9 @@ public class Count_and_Say {
 		n = 2;
 		System.out.println(n + "th number in sequence is: " + countAndSay(n));
 		
+		n = 3;
+		System.out.println(n + "th number in sequence is: " + countAndSay(n));
+		
 		n = 4;
 		System.out.println(n + "th number in sequence is: " + countAndSay(n));
 	}
