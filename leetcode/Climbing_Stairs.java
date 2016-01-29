@@ -2,6 +2,14 @@ package leetcode;
 
 import java.util.HashMap;
 
+/**
+ * Given the number of stairs, how many 
+ * distinct ways are there to climb the 
+ * stairs if someone can take 1 or 2
+ * steps at a time?
+ * @author Debosmit
+ *
+ */
 public class Climbing_Stairs {
 	
 	private static HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
