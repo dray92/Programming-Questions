@@ -6,6 +6,15 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+/**
+ * Given 2 arrays that have 
+ * the same elements except
+ * for one, find the missing
+ * element.
+ * @author Debosmit
+ *
+ */
+
 public class Find_Missing_Element_Arrays {
 	
 	public static int getMissingElement(int[] arr, int[] arr2) {

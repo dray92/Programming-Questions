@@ -1,5 +1,11 @@
 package leetcode;
 
+/**
+ * Divide 2 integers without any 
+ * arithmetic operators.
+ * @author Debosmit
+ *
+ */
 public class Divide_Two_Integers {
 	public static int divide(int dividend, int divisor) {
         
@@ -12,7 +18,7 @@ public class Divide_Two_Integers {
 		if(divisor == -1 && dividend == Integer.MIN_VALUE) 
 			return Integer.MAX_VALUE;
 		
-		//get positive values
+		// get positive values
 	    long pDividend = Math.abs((long)dividend);
 	    long pDivisor = Math.abs((long)divisor);
 		
