@@ -24,5 +24,9 @@ public class Bits5_6 {
 		System.out.println(x + ": " + Integer.toBinaryString(x));
 		int y = SwapBits.swapBits(x);
 		System.out.println(y + ": " + Integer.toBinaryString(y));
+		
+		String st = "12312123;www.qwerty.com";
+		String p = st.split(";")[1].split("\\.")[1];
+		System.out.println(p);
 	}
 }
