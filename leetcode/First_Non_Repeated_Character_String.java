@@ -2,6 +2,12 @@ package leetcode;
 
 import java.util.HashMap;
 
+/**
+ * Get the first non-repeated 
+ * character of a string.
+ * @author Debosmit
+ *
+ */
 public class First_Non_Repeated_Character_String {
 	public char firstNonRepeated(String st) {
 		HashMap<Character, Integer> map = new HashMap<Character, Integer>();

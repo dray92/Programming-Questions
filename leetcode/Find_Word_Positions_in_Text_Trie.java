@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 
-/*
+/**
  * Given a text file and a word, find the positions 
  * that the word occurs in the file. We’ll be asked to 
  * find the positions of many words in the same file.
@@ -25,10 +25,6 @@ public class Find_Word_Positions_in_Text_Trie {
 		
 		TrieNodeSet(char c) {
 			this.c = c;
-		}
-		
-		char getChar() {
-			return this.c;
 		}
 	}
 	
