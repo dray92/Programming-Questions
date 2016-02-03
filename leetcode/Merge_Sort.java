@@ -48,7 +48,7 @@ public class Merge_Sort {
 	
 	public static void main(String[] args) {
 		Merge_Sort Sorter = new Merge_Sort();
-		int[] arr = {4,2,3,1,5};
+		int[] arr = {3, 4, 2, 5, 1, 7, 6, 9, 8, 0, 19, 81, 71, 65, 99, 191, 153, 132};
 		System.out.println("Array before sort: " + Arrays.toString(arr));
 		Sorter.sort(arr);
 		System.out.println("Array after sort: " + Arrays.toString(arr));
