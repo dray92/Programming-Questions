@@ -32,7 +32,7 @@ public class Trie {
     	
     	for(int i = 0 ; i < word.length() ; i++) {
     		char c = word.charAt(i);
-    		
+
     		TrieNode t;
     		if(children.containsKey(c))
                 t = children.get(c);
