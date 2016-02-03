@@ -1,5 +1,9 @@
 package ctci;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 /** 
  * An array contains integer from 
  * 0 to n, except for one number which is
@@ -22,20 +26,20 @@ public class Bits5_7 {
 	 *  consider the LSB of numbers from
 	 *  0 to n
 	 *  for n = 3, arr = {0,1,2,3}
-	 *  0 -> 0 0 0 0
-	 *  1 -> 0 0 0 1
-	 *  2 -> 0 0 1 0
-	 *  3 -> 0 0 1 1
+	 *  0 -> 0 0
+	 *  1 -> 0 1
+	 *  2 -> 1 0
+	 *  3 -> 1 1
 	 *  
 	 *  Considering LSBs, number of 0's = 2
 	 *  and number of 1's = 2
 	 *  
 	 *  for n = 4, arr = {0,1,2,3,4}
-	 *  0 -> 0 0 0 0
-	 *  1 -> 0 0 0 1
-	 *  2 -> 0 0 1 0
-	 *  3 -> 0 0 1 1
-	 *  4 -> 0 1 0 0
+	 *  0 -> 0 0 0
+	 *  1 -> 0 0 1
+	 *  2 -> 0 1 0
+	 *  3 -> 0 1 1
+	 *  4 -> 1 0 0
 	 *  Considering LSBs, number of 0's = 3
 	 *  and number of 1's = 2
 	 *  
@@ -58,14 +62,78 @@ public class Bits5_7 {
 	 *  Hence, if count(0s) >= count(1s) => even number removed
 	 *  	   if count(0s) < count(1s) => odd number removed
 	 *  
-	 *  
 	 *  Now, same process holds for the second LSB, instead of the first LSB,
 	 *  i.e., instead of bit 0, look at bit 1.
+	 *  This will hold true for all bits, ranging from LSB to MSB.
 	 */
 	
+	public int getMissing(ArrayList<BitInts> arr) {
+		return getMissing(arr, BitInts.INTEGER_SIZE - 1);
+	}
 	
-	public class BitInts {
-		public int INTEGER_SIZE;
+	/**
+	 * Returns the missing element in the ArrayList
+	 * @param arr	list of elements in the range [0, arr.size()]
+	 * @param i		i-th MSB being accounted for
+	 * @return
+	 */
+	private int getMissing(ArrayList<BitInts> arr, int i) {
+		// base case
+		if(i < 0)
+			return 0;
+		
+		ArrayList<Bits5_7.BitInts> ones = new ArrayList<Bits5_7.BitInts>();
+		ArrayList<Bits5_7.BitInts> zeros = new ArrayList<Bits5_7.BitInts>();
+		for(BitInts bitInt: arr) {
+			if(bitInt.getBit(i) == 1)
+				ones.add(bitInt);
+			else 
+				zeros.add(bitInt);
+		}
+		if (zeros.size() <= ones.size()) {
+        	int v = getMissing(zeros, i - 1);
+        	return (v << 1) | 0;
+        } else {
+        	int v = getMissing(ones, i - 1);
+        	return (v << 1) | 1;
+        }
+	}
+
+	public static void main(String[] args) {
+		int maxNum = 4, missing = 2;
+		
+		Bits5_7 NumberFinder = new Bits5_7();
+		ArrayList<Bits5_7.BitInts> nums = getBitIntArray(maxNum, missing);
+		
+		System.out.println("Range of numbers = [0 , " + maxNum + "]");
+		System.out.println("Array: " + Arrays.toString(nums.toArray()));
+		System.out.println("Missing number: " + missing);
+		
+		int computedMissing = NumberFinder.getMissing(nums);
+		System.out.println("Value returned: " + computedMissing);
+		
+	}
+	
+	private static ArrayList<Bits5_7.BitInts> getBitIntArray(int n, int missingVal) {
+		if(missingVal > n || missingVal < 0)
+			throw new IllegalArgumentException("Missing value isn't in the set [0," + n + "]");
+		
+		// set size of bits array to the 
+		// size of the number n
+		Bits5_7.BitInts.INTEGER_SIZE = Integer.toBinaryString(n).length();
+		ArrayList<Bits5_7.BitInts> arr = new ArrayList<Bits5_7.BitInts>();
+		
+		for(int i = 1; i <= n ; i++)
+			arr.add(new Bits5_7.BitInts(i != missingVal ? i : 0));
+		
+		// shuffle array for safe measure
+		Collections.shuffle(arr);
+		
+		return arr;
+	}
+	
+	public static class BitInts {
+		public static int INTEGER_SIZE;
 		private Boolean[] bits;
 		
 		public BitInts() {
@@ -142,6 +210,16 @@ public class Bits5_7 {
 			for(int i = 0 ; i < INTEGER_SIZE ; i++) 
 				num += getBit(i) * (int)Math.pow(2, i);
 			return num;
+		}
+	
+		/**
+		 * @return string representation of this BigInt
+		 */
+		public String toString() {
+			StringBuilder sb = new StringBuilder();
+			for(int i = INTEGER_SIZE - 1 ; i >= 0 ; i--)
+				sb.append(getBit(i) == 1 ? '1' : '0');
+			return sb.toString();
 		}
 	}
 	
