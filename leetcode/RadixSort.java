@@ -56,10 +56,9 @@ public class RadixSort {
 	
 	public static void main(String[] args) {
 		int[] arr = {3, 4, 2, 5, 1, 7, 6, 9, 8, 0, 19, 81, 71, 65, 99, 191, 153, 132};
-//		int[] arr = {3, 4, 2, 5, 1};
-		RadixSort radix = new RadixSort();
+		RadixSort Sorter = new RadixSort();
 		System.out.println("Array: " + Arrays.toString(arr));
-		radix.sort(arr);
+		Sorter.sort(arr);
 		System.out.println("Array: " + Arrays.toString(arr));
 	}
 }
