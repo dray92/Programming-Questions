@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class RecursionDP9_2 {
 
 	public static int[][] maze;
-	public static int N = 200;
+	public static int N = 120;
 	
 	public long getNumPaths(int x, int y) {
 		// possible paths from (0,0) to (x,y)
