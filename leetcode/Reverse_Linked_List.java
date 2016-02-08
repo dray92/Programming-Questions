@@ -1,7 +1,15 @@
-package ctci;
+package leetcode;
 
+import ctci.LinkedList2_1;
 import ctci.LinkedList2_1.Node;
 
+/**
+ *  Write a function for reversing a linked list, in-place.
+ *  Your function will have one input: the head of the list.
+ *  Your function should return the new head of the list. 
+ * @author Debosmit
+ *
+ */
 public class Reverse_Linked_List {
 
 	public Node<Object> reverseList(Node<Object> head) {
