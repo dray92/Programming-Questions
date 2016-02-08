@@ -2,6 +2,19 @@ package leetcode;
 
 import java.util.Arrays;
 
+/**
+ * A building has 100 floors. One of the floors is the highest 
+ * floor an egg can be dropped from without breaking.
+ * 
+ * If an egg is dropped from above that floor, it will break. 
+ * If it is dropped from that floor or below, it will be completely 
+ * undamaged and you can drop the egg again.
+ * 
+ * Given two eggs, find the highest floor an egg can be dropped 
+ * from without breaking, with as few drops as possible. 
+ * @author Debosmit
+ *
+ */
 public class Two_Egg_Problem {
 	private static final int MAX_HEIGHT = 100;
 	private int[] floors;
