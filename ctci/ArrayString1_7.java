@@ -11,12 +11,16 @@ import java.util.Set;
  */
 public class ArrayString1_7 {
 
-	public class Coordinate {
+	public static class Coordinate {
 		int x, y;
 		
 		public Coordinate(int x, int y) {
 			this.x = x;
 			this.y = y;
+		}
+		
+		public String toString() {
+			return "(" + x + "," + y + ")";
 		}
 	}
 	

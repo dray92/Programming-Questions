@@ -9,6 +9,12 @@ public class FormattedTablePrint {
         }
         System.out.println();
     }
+    
+    public void print2DArray(int[][] arr) {
+    	for(int[] row: arr) {
+    		printRow(row);
+    	}
+    }
 
     public static void main(String[] args) {
     	FormattedTablePrint print = new FormattedTablePrint();
