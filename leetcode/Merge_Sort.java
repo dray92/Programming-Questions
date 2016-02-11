@@ -99,7 +99,7 @@ public class Merge_Sort {
 	
 	public static void main(String[] args) {
 		Merge_Sort Sorter = new Merge_Sort();
-		final int arraySize = Integer.MAX_VALUE/50;
+		final int arraySize = Integer.MAX_VALUE/100;
 		int[] arr = new int[arraySize];
 		for(int i = 0 ; i < arr.length ; i++)
 			arr[i] = getInt(0, arraySize);
