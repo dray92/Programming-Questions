@@ -2,8 +2,7 @@ package leetcode;
 
 /**
  * Source: http://courses.csail.mit.edu/iap/interview/Hacking_a_Google_Interview_Practice_Questions_Person_A.pdf
- * Check if input string is the substring of
- * another string.
+ * Check if input string is the substring of another string.
  * @author Debosmit
  *
  */
