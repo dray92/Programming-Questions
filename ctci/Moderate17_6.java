@@ -1,5 +1,7 @@
 package ctci;
 
+import java.util.Arrays;
+
 /**
  * Given an array of integers, write a method 
  * to find indices m and n such that if you 
@@ -18,11 +20,13 @@ public class Moderate17_6 {
 		//  - smaller than everything in right
 		
 		// get points where things go out of order
-		int left = findEndOfLeft(arr), right = findEndOfRight(arr);
+		int left = findEndOfLeft(arr);
 		
 		// already sorted
 		if(left == arr.length - 1)
 			return new Result(-1,-1);
+		
+		int right = findEndOfRight(arr);
 		
 		// set min and max
 		int maxIndx = left, minIndx = right;
@@ -84,4 +88,13 @@ public class Moderate17_6 {
 			this.upper = n;
 		}
 	}
+
+	public static void main(String[] args) {
+		int[] arr = {4,5,3,2,8,9};
+		System.out.println(Arrays.toString(arr));
+		Moderate17_6 Bounds = new Moderate17_6();
+		Result res = Bounds.getBounds(arr);
+		System.out.println("Bounds: " + res.lower + ", " + res.upper);
+	}
+
 }
