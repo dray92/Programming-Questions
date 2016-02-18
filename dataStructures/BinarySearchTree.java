@@ -1,10 +1,12 @@
 package dataStructures;
 
+import java.util.Stack;
+
 import dataStructures.BinaryTree.Node;
 
 // duplication not allowed
 public class BinarySearchTree {
-	
+	Stack<Integer> stack;
 	private Node root;
 	
 	public Node getRoot() {
