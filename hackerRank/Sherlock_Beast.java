@@ -1,4 +1,4 @@
-package ctci;
+package hackerRank;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Sherlock_Beast {
         int t = in.nextInt();
         for(int a0 = 0; a0 < t; a0++){
             int n = in.nextInt();
-            if(n <= 1 || n == 2 || n == 4) {
+            if(n <= 1 || n == 2 || n == 4 || n==7) {
                 System.out.println("-1");
                 continue;
             }
