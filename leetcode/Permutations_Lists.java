@@ -87,9 +87,9 @@ public class Permutations_Lists {
 	    System.out.println();
 	}
 	
-	public static <T> Set<List<T>> getCombinations(List<List<T>> lists) {
-		Set<List<T>> combinations = new HashSet<List<T>>();
-		Set<List<T>> newCombinations;
+	public static <T> List<List<T>> getCombinations(List<List<T>> lists) {
+		List<List<T>> combinations = new ArrayList<List<T>>();
+		List<List<T>> newCombinations;
 		
 		int index = 0;
 		
@@ -141,7 +141,7 @@ public class Permutations_Lists {
 		index++;
 		while(index < lists.size()) {
 			List<T> nextList = lists.get(index);
-			newCombinations = new HashSet<List<T>>();
+			newCombinations = new ArrayList<List<T>>();
 			for(List<T> first: combinations) {
 				for(T second: nextList) {
 					List<T> newList = new ArrayList<T>();
@@ -170,7 +170,7 @@ public class Permutations_Lists {
 		lists.add(l2);
 		lists.add(l3);
 		
-		Set<List<Integer>> combs = getCombinations(lists);
+		List<List<Integer>> combs = getCombinations(lists);
 		for(List<Integer> list : combs) {
 			System.out.println(list.toString());
 		}
