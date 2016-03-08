@@ -1,5 +1,7 @@
 # Benchmark Results
 
+Majorly helpful reference [[link](http://www.luschny.de/math/factorial/FastFactorialFunctions.htm)]
+
 Hyper_Factorial took             182 msecs for 1000000 iterations
 
 Factorial_for_Simple_Minded took 233 msecs for 1000000 iterations
