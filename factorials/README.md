@@ -2,7 +2,7 @@
 
 ####Majorly helpful reference [[link](http://www.luschny.de/math/factorial/FastFactorialFunctions.htm)]
 
-******1 iteration calculates factorials of n: n ∈ [2, 3, ..., 49, 50]******
+******1 iteration calculates factorials of all values n: n ∈ [2, 3, ..., 49, 50]******
 
 1. Hyper_Factorial took             182 msecs for 1000000 iterations
 
