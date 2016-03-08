@@ -15,3 +15,5 @@ ctci [contains solutions to questions from ctci]
 dijkstra [dijkstra's algorithm]
 
 graph [questions related to graph theory]
+
+factorial algorithms [simple, fast, benchmarked]
