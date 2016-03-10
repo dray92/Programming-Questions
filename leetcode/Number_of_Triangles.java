@@ -23,13 +23,13 @@ public class Number_of_Triangles {
 		int count = 0;
 		
 		for(int left = 0 ; left < arr.length - 2 ; left++) {
-			
 			for(int mid = left+1 ; mid < arr.length-1 ; mid++) {
 				// with left and mid fixed, move the pointer right
 				int right = mid+1;
-				while( right < arr.length && arr[right] < (arr[left] + arr[mid]) )
+				while( right < arr.length && arr[right] < (arr[left] + arr[mid]) ) {
+					System.out.println(arr[left] + "," + arr[mid] + "," + arr[right]);
 					right++;
-				
+				}
 				count += (right - mid - 1);
 			}
 		}
@@ -38,7 +38,7 @@ public class Number_of_Triangles {
 	
 	public static void main(String[] args) {
 		int[] arr = new int[]{10, 21, 22, 100, 101, 200, 300};
-		System.out.println(Arrays.toString(arr) + " | Num triangles: " + numTriangles(arr));
+		System.out.println(Arrays.toString(arr) + " | Num triangles: " + numTriangles(arr) + "\n\n\n");
 		
 		arr = new int[]{6, 3, 5, 4};
 		System.out.println(Arrays.toString(arr) + " | Num triangles: " + numTriangles(arr));
