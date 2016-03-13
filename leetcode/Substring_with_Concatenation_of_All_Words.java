@@ -97,6 +97,6 @@ public class Substring_with_Concatenation_of_All_Words {
 		st = "wordgoodgoodgoodbestword";
 		words = new String[]{"word", "good", "best", "good"};
 		System.out.println(Word.findSubstring(st, words));
-		
+	
  	}
 }
