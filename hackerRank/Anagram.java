@@ -1,18 +1,16 @@
 package hackerRank;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Anagram {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 	    int numTestCases = scan.nextInt();
 	    
-	    if(numTestCases < 1 || numTestCases > 5000)
+	    if(numTestCases < 1 || numTestCases > 5000) {
+	    	scan.close();
 	    	throw new IllegalArgumentException();
+	    }
 	    
 	    while(numTestCases > 0) {
 	    	String a = scan.next();
@@ -23,6 +21,7 @@ public class Anagram {
 	
 	    	numTestCases--;
 	    }
+	    scan.close();
 	}
 
 	private static int numCharsChange(String a) {
