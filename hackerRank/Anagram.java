@@ -14,7 +14,7 @@ public class Anagram {
 	    if(numTestCases < 1 || numTestCases > 5000)
 	    	throw new IllegalArgumentException();
 	    
-	    while(numTestCases > 100) {
+	    while(numTestCases > 0) {
 	    	String a = scan.next();
 	    	
 	    	int result = numCharsChange(a);
@@ -23,14 +23,6 @@ public class Anagram {
 	
 	    	numTestCases--;
 	    }
-	    
-	    List<String> s = new ArrayList<String>();
-	    s.add("1");
-	    s.add("2");
-	    List<Integer> list = new ArrayList<Integer>(); 
-	    s.forEach((val) -> list.add(Integer.valueOf(val)));
-	    System.out.println(list);
-	    int[] n = new int[] {1,2,2};
 	}
 
 	private static int numCharsChange(String a) {
