@@ -31,9 +31,11 @@ public class Jesse_And_Cookies {
             // one element left and it is smaller than min
             if(pq.size() == 1 && pq.peek() < min) {
                 System.out.println(-1);
+                sc.close();
                 return;
             }
 		}
 		System.out.println(ops);
+		sc.close();
 	}
 }
