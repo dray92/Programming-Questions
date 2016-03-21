@@ -1,6 +1,9 @@
 package hackerRank;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -102,22 +105,34 @@ public class Down_To_Zero_II {
 		int q = scan.nextInt();
 		while(q > 0) {
 			int n = scan.nextInt();
-			takeToZero(n, 0);
+			System.out.println( takeToZero(n) );
 			q--;
 		}
 		scan.close();
-		
 	}
 
-	private static void takeToZero(int n, int steps) {
+	private static Map<Integer, Integer> cache = new HashMap<Integer, Integer>();
+	private static int takeToZero(int n) {
+		if(cache.containsKey(n))
+			return cache.get(n);
+		
 		if(n == 0)
-			System.out.println(steps);
+			return 0;
 		
 		if(n == 1)
-			System.out.println(steps + 1);
+			return (1);
 		
-		if(known.contains(n))
-			takeToZero(n-1, steps);
+		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+		pq.add( 1 + takeToZero(n-1) );
 		
+		// if number is not prime
+		if(!known.contains(n)) 
+			// add number of steps for each of the factors
+			for(int i = 2 ; i <= Math.sqrt(n) ; i++) 
+				if(n % i == 0) 
+					pq.add( 1 + takeToZero( Math.min(i, n/i)) );
+			
+		cache.put(n, pq.poll());
+		return cache.get(n);
 	}
 }
