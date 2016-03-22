@@ -1,7 +1,9 @@
 package hackerRank;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -17,6 +19,7 @@ public class Down_To_Zero_II {
 	private static final int UPPER = 1000000;
 	
 	private static Set<Integer> known = null;
+	private static Map<Integer, List<Integer>> factors;
 	static {
 //		// implementing Sieve of Eratosthenes to
 //		// pre-compute set of primes till 'UPPER'
@@ -98,6 +101,17 @@ public class Down_To_Zero_II {
 		for(int i = 0 ; i < n/3 - (correction ? 1: 0) ; i++) 
 			if(sieve[i])
 				known.add((3*i + 1) | 1);
+		
+		factors = new HashMap<Integer, List<Integer>>();
+		for(int i = 2 ; i <= n ; i++) {
+			if(known.contains(n))
+				continue;
+			List<Integer> factorsOfN = new ArrayList<Integer>();
+			for(int factor = 2 ; factor < Math.sqrt(i) ; factor++)
+				if(i % factor == 0)
+					factorsOfN.add( Math.max(factor, i/factor) );
+			factors.put(i, factorsOfN);
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -126,12 +140,18 @@ public class Down_To_Zero_II {
 		pq.add( 1 + takeToZero(n-1) );
 		
 		// if number is not prime
-		if(!known.contains(n)) 
-			// add number of steps for each of the factors
-			for(int i = 2 ; i <= Math.sqrt(n) ; i++) 
-				if(n % i == 0) 
-					pq.add( 1 + takeToZero( Math.min(i, n/i)) );
+		if(!known.contains(n)) {
 			
+			if(!factors.containsKey(n)) {
+				// add number of steps for each of the factors
+				for(int i = 2 ; i <= Math.sqrt(n) ; i++) 
+					if(n % i == 0) 
+						pq.add( 1 + takeToZero( Math.max(i, n/i)) );
+			} else {
+				for(int factor: factors.get(n) )
+					pq.add( 1 + factor );
+			}				
+		}	
 		cache.put(n, pq.poll());
 		return cache.get(n);
 	}
