@@ -86,7 +86,7 @@ public class AVLTree {
 		} else if(balance < -1) {	// right subtree violates AVL
 			if(height(root.right.right) >= height(root.right.left)){
                 root = leftRotate(root);
-            }else{
+            } else {
                 root.right = rightRotate(root.right);
                 root = leftRotate(root);
             }
