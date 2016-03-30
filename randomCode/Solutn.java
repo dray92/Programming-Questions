@@ -11,7 +11,6 @@ public class Solutn {
         }
     }
 
-
 	public static void main(String[] args) {
 		StairCase(6);
 	}
