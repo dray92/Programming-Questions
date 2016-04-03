@@ -30,6 +30,7 @@ public class AVLTree {
 	}
 	
 	public Node delete(Node root, int val) {
+		// if value is at the present root
 		if(val == root.value)
 			return null;
 		else if(val < root.value) 
