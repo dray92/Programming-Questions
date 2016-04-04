@@ -3,7 +3,8 @@ package dataStructures;
 /**
  * Base interface for priority queue implementations for doubles. 
  * Throw exceptions as appropriate. 
- * @param <T>
+ * 
+ * @author Debosmit
  */
 public interface PriorityQueue<T> {
 	/**
