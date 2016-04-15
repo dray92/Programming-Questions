@@ -3,51 +3,61 @@ package leetcode;
 public class String_to_Integer {
 	
 	public static int myAtoi(String s) {
+        if(s == null)
+			throw new NumberFormatException("null");
+		
 		s = s.trim();
 		
-		boolean neg = false, setFirst = false;
-		
 		if(s.length() == 0)
-			return 0;
+		    return 0;
 		
-		if(s.charAt(0) == '-' || s.charAt(0) == '+') {
-			setFirst = true;
-			neg = s.charAt(0) == '-';
-		}
+		int result = 0;
+		boolean negative = false;
+        int limit = -Integer.MAX_VALUE;
+		int indx = 0, len = s.length(), digit, multmin;
 		
-		if(!setFirst && (s.charAt(0) < '0' || s.charAt(0) > '9'))
-			return 0;
+		final int RADIX = 10;
 		
-		int val = 0, val2 = 0;
-		
-		for(int i = 0 ; i < s.length() ; i++) {
-			if(setFirst && i==0)
-				continue;
-			
-			if(setFirst && neg && s.charAt(i) == '+')
-				return 0;
-			
-			if(setFirst && s.charAt(i) == '-')
-				return 0;
-			
-			if(s.charAt(i) < '0' || s.charAt(i) > '9')
-				break;
-			
-			val2 = (val*10) + (s.charAt(i)-'0');
-			
-			if(val >= Integer.MAX_VALUE/10)
-				return neg ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-			
-			val = val2;
-		}
-		
-		if(neg)
-			return val*-1;
-		
-		return val;
+		if(len > 0) {
+			char first = s.charAt(0);
+			// first character must either be a number
+			// or a + or -
+			if(first < '0') {
+				if(first == '-') {
+					limit = Integer.MIN_VALUE;
+					negative = true;
+				} else if(first != '+') {
+					return 0; // throw new NumberFormatException("first character must be a digit, \'+\' or \'-\'");
+				}
+				if (len == 1) // Cannot have lone "+" or "-"
+					return 0; // throw new NumberFormatException("contains only a + or a -");
+                indx++;
+			}
+			multmin = limit / RADIX;
+			while(indx < len) {
+				digit = Character.digit(s.charAt(indx++), RADIX);
+				
+				if (digit < 0) {
+                    break; // throw new NumberFormatException("illegal character at index " + (indx-1));
+                }
+				if (result < multmin) {
+                    return negative ? Integer.MIN_VALUE : Integer.MAX_VALUE; // throw new NumberFormatException("overflow");
+                }
+                result *= RADIX;
+                if (result < limit + digit) {
+                    return negative ? Integer.MIN_VALUE : Integer.MAX_VALUE; //throw new NumberFormatException("overflow");
+                }
+                result -= digit;
+            }
+        } else {
+            throw new NumberFormatException("bad length");
+        }
+		return negative ? result : -result;
 	}
 	
 	public static void main(String[] args) {
+		Integer.parseInt("");
+		
 		String num = "1234";
 		System.out.println("Converting 1234: " + myAtoi(num));
 		
