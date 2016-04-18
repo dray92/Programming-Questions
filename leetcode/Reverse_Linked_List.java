@@ -1,6 +1,5 @@
 package leetcode;
 
-import ctci.LinkedList2_1;
 import ctci.LinkedList2_1.Node;
 
 /**
