@@ -7,7 +7,7 @@ rwh_primes1 <br/>
 10 loops, best of 3: 42.7 msec per loop
 
 rwh_primes2 **<--------------**<br/>
-10 loops, best of 3: 30.2 msec per loop
+10 loops, best of 3: **30.2 msec per loop**
 
 sieve_wheel_30 <br/>
 10 loops, best of 3: 48.5 msec per loop
@@ -33,4 +33,4 @@ primesfrom3to <br/>
 100 loops, best of 3: 3 msec per loop
 
 primesfrom2to **<--------------**<br/>
-100 loops, best of 3: 2.6 msec per loop
+100 loops, best of 3: **2.6 msec per loop**
