@@ -177,7 +177,7 @@ public class Transform_Word {
 		Transform_Word transformer = new Transform_Word();
 		HashMap<String, List<String>> graph = transformer.preProcess(dictionary);
 //		ArrayList<String> words = transformer.transformWord(graph, "cat", "cats");
-		ArrayList<String> words = transformer.transformWord(graph, "cat", "bed");
+		ArrayList<String> words = transformer.transformWord(graph, "cat", "bridge");
 		
 		if(words == null || words.size() == 0)
 			return;
