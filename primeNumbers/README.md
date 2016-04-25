@@ -1,4 +1,4 @@
-USAGE: bash test.sh
+#### USAGE: bash test.sh
 
 rwh_primes
 10 loops, best of 3: 50 msec per loop
@@ -24,7 +24,8 @@ ambi_sieve_plain
 sundaram3
 10 loops, best of 3: 260 msec per loop
 
-NUMPY! ENTER THE BATTLE!
+###### Using NUMPY
+
 ambi_sieve
 100 loops, best of 3: 10.1 msec per loop
 
