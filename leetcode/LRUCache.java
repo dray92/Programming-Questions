@@ -66,7 +66,7 @@ public class LRUCache {
         	Node node = new Node(key, value);
         	if(map.size() == capacity) {
         		map.remove(tail.key);
-        		map.remove(tail);
+        		remove(tail);
         	}
         	setHead(node);
         	map.put(key, node);
@@ -85,8 +85,10 @@ public class LRUCache {
     	public String toString() {
     		Node cur = this;
     		String st = "";
-    		while(cur != tail.next)
+    		while(cur != null) {
     			st += cur.val;
+    			cur = cur.next;
+    		}
     		
     		return st;
     	}
