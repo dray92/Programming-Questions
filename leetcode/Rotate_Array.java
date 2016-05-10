@@ -22,10 +22,10 @@ public class Rotate_Array<T> {
 		int leftHalfLen = arr.length - k;
 		
 		// reverse left half
-		reverse(0, leftHalfLen);
+		reverse(0, leftHalfLen - 1);
 		
 		// reverse right half
-		reverse(leftHalfLen + 1, arr.length - 1);
+		reverse(leftHalfLen, arr.length - 1);
 		
 		// reverse entire array
 		reverse(0, arr.length - 1);
