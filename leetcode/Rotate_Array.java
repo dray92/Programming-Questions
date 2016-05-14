@@ -39,6 +39,7 @@ public class Rotate_Array<T> {
 		this.arr = arr;
 	}
 	
+	// reverse array starting from left to right, inclusive
 	private void reverse(int left, int right) {
 		if(arr == null || arr.length == 1 || (right-left) < 1)
 			return;
